@@ -1,4 +1,4 @@
-package org.meteofx;
+package ro.mta.se.lab;
 
 import java.io.IOException;
 import javafx.fxml.FXML;

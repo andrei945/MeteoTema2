@@ -1,4 +1,4 @@
-package org.meteofx;
+package ro.mta.se.lab;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
