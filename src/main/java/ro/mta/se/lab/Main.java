@@ -10,13 +10,28 @@ import java.io.IOException;
 
 public class Main extends Application {
     private static Scene scene;
+    private MainWindowController controller;
+
 
     @Override
     public void start(Stage stage) throws IOException {
+
+
+
+
         scene = new Scene(loadFXML("MainWindow"));
         stage.setScene(scene);
+
+
+        stage.setTitle("Meteo App");
         stage.setResizable(false); // fixed size
+
+        //MainWindowController ctrl = Main.setSceneResult();
+
+
         stage.show();
+
+
     }
 
     static void setRoot(String fxml) throws IOException {
@@ -25,8 +40,12 @@ public class Main extends Application {
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
+        //handler = new FXMLLoader(fxmlLoader);
         return fxmlLoader.load();
     }
+
+
+
 
     public static void main(String[] args) {
         launch();
