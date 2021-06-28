@@ -16,10 +16,10 @@ public class openWeatherMap {
     private Map<String, Object> map;
 
 
-    public void fetchWeatherData(String Country, String City)
+    public void fetchWeatherData(String CountryCode, String City)
     {
         apiURL = "https://api.openweathermap.org/data/2.5/weather?q=";
-        apiURL += City + "," + Country + "&appid=" + apiKey + "&units=metric";
+        apiURL += City + "," + CountryCode + "&appid=" + apiKey + "&units=metric";
 
         try{
             StringBuilder result = new StringBuilder();

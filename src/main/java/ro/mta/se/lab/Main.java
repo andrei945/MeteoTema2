@@ -20,8 +20,8 @@ public class Main extends Application {
 
         scene = new Scene(loadFXML("MainWindow"));
 
-        openWeatherMap wapi = new openWeatherMap();
-        MainWindowController.setWeatherAPI(wapi);
+//        openWeatherMap wapi = new openWeatherMap();
+        MainWindowController.StartWeatherAPI();
 
         stage.setScene(scene);
 

@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import com.google.gson.JsonParser;
@@ -15,38 +16,62 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ro.mta.se.lab.API.openWeatherMap;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 
 public class MainWindowController {
     @FXML
-    ChoiceBox country_list;
-    @FXML
-    ChoiceBox city_list;
-    @FXML
     Button selectButton;
+    @FXML
+    ComboBox country_list_combo;
+    @FXML
+    ComboBox city_list_combo;
 
     boolean button_pressed;
 
     private static openWeatherMap wapi;
+    private static File locationsNameList;
 
     public MainWindowController()
     {
-
+        locationsNameList = null;
+        wapi = null;
     }
 
     @FXML
     public void initialize() {
-        country_list.setVisible(false);
-        city_list.setVisible(false);
+        country_list_combo.setVisible(false);
+        city_list_combo.setVisible(false);
         button_pressed = false;
     }
 
-    public static void setWeatherAPI(openWeatherMap api)
+    public static void StartWeatherAPI()
     {
-        wapi = api;
-        wapi.fetchWeatherData("uk","London");
+        wapi = new openWeatherMap();
+        locationsNameList = new File("./src/main/java/ro/mta/se/lab/locationsData.txt");
+
+        if (locationsNameList == null)
+        {
+            System.out.println("File not found");
+        }
+
+        try{
+            Scanner reader = new Scanner(locationsNameList);
+            String data;
+           while (reader.hasNextLine())
+           {
+               data = reader.nextLine();
+           }
+
+            reader.close();
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 
@@ -56,18 +81,18 @@ public class MainWindowController {
         {
             button_pressed = false;
             selectButton.setText("Select");
-            country_list.setVisible(false);
-            city_list.setVisible(false);
+            country_list_combo.setVisible(false);
+            city_list_combo.setVisible(false);
 
         }
         else{
             button_pressed = true;
             selectButton.setText("OK");
-            country_list.setVisible(true);
-            city_list.setVisible(true);
+            country_list_combo.setVisible(true);
+            city_list_combo.setVisible(true);
         }
 
-        wapi.fetchWeatherData("London", "uk");
+        //wapi.fetchWeatherData("London", "uk");
 
 
     }
