@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import ro.mta.se.lab.API.openWeatherMap;
 
 import java.io.IOException;
 
@@ -17,17 +18,15 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
 
 
-
-
         scene = new Scene(loadFXML("MainWindow"));
-        stage.setScene(scene);
 
+        openWeatherMap wapi = new openWeatherMap();
+        MainWindowController.setWeatherAPI(wapi);
+
+        stage.setScene(scene);
 
         stage.setTitle("Meteo App");
         stage.setResizable(false); // fixed size
-
-        //MainWindowController ctrl = Main.setSceneResult();
-
 
         stage.show();
 
@@ -47,8 +46,9 @@ public class Main extends Application {
 
 
 
-    public static void main(String[] args) {
-        launch();
+    public static void main(String[] args) throws IOException {
+        launch(args);
+       // setRoot("MainWindow");
     }
 
 }

@@ -99,7 +99,7 @@
             <Image url="@images/012-farenheit.png" />
          </image>
       </ImageView>
-      <Button id="selectButton" layoutX="35.0" layoutY="35.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="67.0" style="-fx-background-color: #064882; -fx-text-fill: #ffffff; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 5; -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0);" text="Select" />
+      <Button fx:id="selectButton" layoutX="35.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#onClickSelectButton" prefHeight="28.0" prefWidth="67.0" style="-fx-background-color: #064882; -fx-text-fill: #ffffff; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 5; -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0);" text="Select" />
       <ChoiceBox fx:id="country_list" layoutX="14.0" layoutY="106.0" prefWidth="150.0" style="-fx-background-color: #064882; -fx-mark-color: gray; -fx-text-fill: white; -fx-border-radius: 10; -fx-background-radius: 10;" />
       <ChoiceBox fx:id="city_list" layoutX="178.0" layoutY="106.0" prefWidth="150.0" style="-fx-background-color: #064882; -fx-mark-color: gray; -fx-text-fill: white; -fx-border-radius: 10; -fx-background-radius: 10;" />
 
