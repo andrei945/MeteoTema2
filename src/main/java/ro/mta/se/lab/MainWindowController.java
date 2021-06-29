@@ -29,11 +29,15 @@ import static java.lang.Double.parseDouble;
 
 
 public class MainWindowController {
+
+    //- - - - - - - - - - - - - - - - - - Properties - - - - - - - - - - - - - - - - - - - -
+    //Containers
     @FXML
     GridPane grid;
     @FXML
     GridPane grid2;
 
+    //Buttons
     @FXML
     Button selectButton;
     @FXML
@@ -41,6 +45,7 @@ public class MainWindowController {
     @FXML
     ImageView faren_button;
 
+    //country and city list + display text
     @FXML
     ComboBox country_list_combo;
     @FXML
@@ -50,11 +55,13 @@ public class MainWindowController {
     @FXML
     Label country_label;
 
+    //weather image + display text (for status)
     @FXML
     ImageView weatherIcon;
     @FXML
     Label weatherText;
 
+    //data labels for weather
     @FXML
     Label temperature_label;
     @FXML
@@ -64,17 +71,22 @@ public class MainWindowController {
     @FXML
     Label sun_label;
 
+    //Date label
     @FXML
     Label date_label;
 
+    //status variables
     boolean button_pressed;
     boolean celsius;
 
+    //Controller General Purpose Variables
     private static openWeatherMap wapi;
     private static File locationsNameList;
     private static List<CityObject> cities;
     private static Set<String> countries;
 
+
+    //- - - - - - - - - - - - - - - - - - Behaviour - - - - - - - - - - - - - - - - - - - -
     public MainWindowController()
     {
         locationsNameList = null;
@@ -82,6 +94,7 @@ public class MainWindowController {
         cities = null;
     }
 
+    //- - - - - - - - - - - - - - - - - - - - - Internal Update an Modify GUI
     @FXML
     public void initialize() {
         country_list_combo.setVisible(false);
@@ -218,6 +231,9 @@ public class MainWindowController {
     }
 
 
+
+
+    //- - - - - - - - - - - - - - - - - - - - - Event Listeners
     public void onClickSelectButton(MouseEvent mouseEvent) {
         if (button_pressed == true)
         {

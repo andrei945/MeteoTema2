@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class openWeatherMap {
+    //- - - - - - - - - - - - - - - - - - Properties - - - - - - - - - - - - - - - - - - - -
     private String apiKey = "c9dcebae7c4eac089ab15fcf2c1fad09";
     private String apiURL = "https://api.openweathermap.org/data/2.5/weather?q=";
 
@@ -26,12 +27,25 @@ public class openWeatherMap {
     public ForecastObject weather;
     //private Map<String, Object>
 
+    //- - - - - - - - - - - - - - - - - - Behaviour - - - - - - - - - - - - - - - - - - - -
+
+    //- - - - - - - - - - - - - - - - - - - - - Internal Clean and ParseJSON (using Gson)
     private Map<String, Object> jsonToMap(String str)
     {
         Map<String, Object> map = new Gson().fromJson(str, new TypeToken<HashMap<String,Object>>() {}.getType());
         return map;
     }
 
+    private void cleanData()
+    {
+        map.clear();
+        mainMap.clear();
+        windMap.clear();
+        cloudsMap.clear();
+        weatherMap.clear();
+    }
+
+    //- - - - - - - - - - - - - - - - - - - - - extracting API data
     public void fetchWeatherData(String CountryCode, String City)
     {
 
@@ -58,9 +72,6 @@ public class openWeatherMap {
             this.windMap = jsonToMap(map.get("wind").toString());
             this.cloudsMap = jsonToMap(map.get("clouds").toString());
 
-            System.out.println(map.get("main").toString());
-            System.out.println(map.get("wind").toString());
-            System.out.println(map.get("clouds").toString());
 
             String jsonText = map.get("weather").toString();
             String[] weatherString = jsonText.substring(2,jsonText.length()-2).split(",");
@@ -76,10 +87,6 @@ public class openWeatherMap {
             }
 
 
-        System.out.println(windMap.get("speed").toString());
-            System.out.println(mainMap.get("humidity").toString());
-            System.out.println(mainMap.get("temp").toString());
-            System.out.println(weatherMap.get(" description").toString());
         this.weather = new ForecastObject(windMap.get("speed").toString(), mainMap.get("humidity").toString(), mainMap.get("temp").toString(), weatherMap.get(" description").toString(), cloudsMap.get("all").toString(), CountryCode);
         }catch (IOException e)
         {
@@ -89,20 +96,10 @@ public class openWeatherMap {
         cleanData();
     }
 
-    public void cleanData()
-    {
-        map.clear();
-        mainMap.clear();
-        windMap.clear();
-        cloudsMap.clear();
-        weatherMap.clear();
-    }
-
+    //- - - - - - - - - - - - - - - - - - - - - Constructor
     public openWeatherMap()
     {
         map = new HashMap<String, Object>();
     }
 
-    public void initAPI() {
-    }
 }

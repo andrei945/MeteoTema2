@@ -16,10 +16,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-
         scene = new Scene(loadFXML("MainWindow"));
 
-//        openWeatherMap wapi = new openWeatherMap();
         MainWindowController.StartWeatherAPI();
 
 
@@ -41,7 +39,6 @@ public class Main extends Application {
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
-        //handler = new FXMLLoader(fxmlLoader);
         return fxmlLoader.load();
     }
 
@@ -50,7 +47,6 @@ public class Main extends Application {
 
     public static void main(String[] args) throws IOException {
         launch(args);
-       // setRoot("MainWindow");
     }
 
 }
