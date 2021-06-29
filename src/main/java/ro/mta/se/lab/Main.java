@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ro.mta.se.lab.API.openWeatherMap;
 
 import java.io.IOException;
 
@@ -22,6 +21,9 @@ public class Main extends Application {
 
 //        openWeatherMap wapi = new openWeatherMap();
         MainWindowController.StartWeatherAPI();
+
+
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         stage.setScene(scene);
 

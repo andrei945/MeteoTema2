@@ -50,7 +50,7 @@ public class CityObject {
 
     public String countryCode;
 
-    public CityObject(String id, String cityName, String lat, String longit, String countryCode)
+    public CityObject(String id, String cityName, String longit, String lat, String countryCode)
     {
         this.id = id;
         this.name = cityName;
