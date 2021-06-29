@@ -1,7 +1,8 @@
 module org.meteofx {
     requires javafx.controls;
     requires javafx.fxml;
+    requires com.google.gson;
 
-    opens org.meteofx to javafx.fxml;
-    exports org.meteofx;
+    opens ro.mta.se.lab to javafx.fxml;
+    exports ro.mta.se.lab;
 }
