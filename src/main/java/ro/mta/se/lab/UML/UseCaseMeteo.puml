@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+
+(Interact with "Select" button) as (Use)
+(Show City and Country GUI\nLoad GUI with data from file) as (Use2)
+(Interact and select City and\n Country) as (Use3)
+(Press "OK" button\n Initialise API and get\n JSON Data) as (Use4)
+(Exit App with Close Button) as (Use6)
+
+
+User -- (Main Start)
+User --> (Use)
+(Use) - (Use2)
+User -> (Use3)
+(Use2) - (Use3)
+(Use3) --> (Use4)
+(Use) <-- (Use4)
+User -> (Use6)
+
+
+note left of User: I'm a user.
+
+
+note "Set-up country_list_combo.valueProperty().addListener\nfor data changed event to populate cities ComboBox." as N3
+
+note "Load FXMLoader from main(), inject GUI code,\ncall @FXML initialize() function. Setup Select\n button listener for mouse click event." as N2
+(Main Start) .. N2
+N2 .. N3
+N3 .. (Use)
+@enduml

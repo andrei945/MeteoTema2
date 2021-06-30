@@ -102,4 +102,8 @@ public class openWeatherMap {
         map = new HashMap<String, Object>();
     }
 
+    public ForecastObject getWeather()
+    {
+        return weather;
+    }
 }
