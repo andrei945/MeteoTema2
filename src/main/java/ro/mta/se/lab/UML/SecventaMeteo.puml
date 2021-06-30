@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       User       as Foo1
+activate Foo1
+
+Foo1 -> Main: **start( )**, **main( )**
+activate Main
+
+Main -> MainWindowController: **FXMLoader.load( )**
+activate MainWindowController
+
+Foo1 -> MainWindowController: **Interact with button**
+MainWindowController -> MainWindowController: **read locationsData.txt**
+activate openWeatherMap
+Foo1 -> MainWindowController: Select Country and City then press OK
+
+MainWindowController -> openWeatherMap: fetchWeatherData(City, Country)
+
+openWeatherMap -> API: request Data
+note right API: https://api.openweathermap.org/data/2.5/weather?q=City,Country&appid=APIKey
+activate API
+API->openWeatherMap: JSON Data
+deactivate API
+
+openWeatherMap -> MainWindowController: updateInterface() from ForecastObject
+MainWindowController -> Foo1: feedback to User
+
+Foo1 -> Main:  **exit**
+destroy openWeatherMap
+destroy MainWindowController
+destroy Main
+
+@enduml
